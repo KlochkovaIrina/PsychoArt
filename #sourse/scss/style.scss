@@ -1,0 +1,777 @@
+//<МИКСИНЫ>
+@mixin anim($time, $delay) {
+   -webkit-transition: all $time ease $delay;
+   -moz-transition: all $time ease $delay;
+   -ms-transition: all $time ease $delay;
+   -o-transition: all $time ease $delay;
+   transition: all $time ease $delay;
+}
+@mixin anim_cubic($time, $delay) {
+   -webkit-transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+   -moz-transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+   -ms-transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+   -o-transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+   transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+}
+@mixin rotate($deg) {
+   -moz-transform: rotate($deg);
+   -ms-transform: rotate($deg);
+   -webkit-transform: rotate($deg);
+   -o-transform: rotate($deg);
+   transform: rotate($deg);
+}
+@mixin scale($num) {
+   -moz-transform: scale($num);
+   -ms-transform: scale($num);
+   -webkit-transform: scale($num);
+   -o-transform: scale($num);
+   transform: scale($num);
+}
+@mixin skew($num) {
+   -webkit-transform: skewX($num);
+   -moz-transform: skewX($num);
+   -ms-transform: skewX($num);
+   -o-transform: skewX($num);
+   transform: skewX($num);
+}
+@mixin cnt($h) {
+   display: flex;
+   flex-direction: column;
+   height: $h;
+   text-align: center;
+   align-items: stretch;
+   justify-content: center;
+}
+@mixin tr($x, $y, $z) {
+   transform: translate3d($x, $y, $z);
+}
+@mixin flexbox() {
+   display: -webkit-box;
+   display: -moz-box;
+   display: -ms-flexbox;
+   display: -webkit-flex;
+   display: flex;
+   font-size: 0;
+}
+@mixin flexorder($val) {
+   -webkit-box-ordinal-group: $val;
+   -moz-box-ordinal-group: $val;
+   -ms-flex-order: $val;
+   -webkit-order: $val;
+   order: $val;
+}
+//</МИКСИНЫ>
+
+//<Подключаем шрифты>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
+//<Шрифт по умолчанию>
+$fontfamily: "Poppins";
+//$font-family: "Jost", sans-serif;
+
+//</Шрифт по умолчанию>
+
+//font-display: swap;
+//<ПЕРЕМЕННЫЕ>
+$minwidth: 320px;
+$mw: 1200px;
+$md1: $mw + 12px;
+$md2: 767.98px;
+$md3: 767.98px;
+$md4: 479.98px;
+//</ПЕРЕМЕННЫЕ>
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>
+* {
+   padding: 0px;
+   margin: 0px;
+   border: 0px;
+}
+*,
+*:before,
+*:after {
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+}
+:focus,
+:active {
+   outline: none;
+}
+a:focus,
+a:active {
+   outline: none;
+}
+aside,
+nav,
+footer,
+header,
+section {
+   display: block;
+}
+html,
+body {
+   height: 100%;
+   margin: 0;
+   padding: 0;
+   min-width: $minwidth;
+   position: relative;
+   width: 100%;
+   color: #000;
+}
+body {
+   font-size: 100%;
+   line-height: 1;
+   font-size: 14px;
+   font-family: $fontfamily;
+   -ms-text-size-adjust: 100%;
+   -moz-text-size-adjust: 100%;
+   -webkit-text-size-adjust: 100%;
+   &.lock {
+      overflow: hidden;
+      @media (max-width: $md3) {
+         width: 100%;
+         position: fixed;
+         overflow: hidden;
+      }
+   }
+}
+input,
+button,
+textarea {
+   font-family: $fontfamily;
+}
+input::-ms-clear {
+   display: none;
+}
+button {
+   cursor: pointer;
+}
+button::-moz-focus-inner {
+   padding: 0;
+   border: 0;
+}
+a,
+a:visited {
+   text-decoration: none;
+}
+a:hover {
+   text-decoration: none;
+}
+ul li {
+   list-style: none;
+}
+img {
+   vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-weight: inherit;
+   font-size: inherit;
+}
+//-webkit-overflow-scrolling: touch;
+//animation-play-state: paused !important;
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>
+
+//подключение стилей
+@import "header.scss";
+@import "footer.scss";
+//подключение стилей
+//<ОБОЛОЧКА>
+.wrapper {
+   width: 100%;
+   min-height: 100%;
+   overflow: hidden;
+
+   &.loaded {
+   }
+}
+//</ОБОЛОЧКА>
+//<ОСНОВНАЯ СЕТКА>
+.container {
+   max-width: $mw;
+   margin: 0 auto;
+   width: 100%;
+   //background-color: antiquewhite;
+   padding: 0px 15px 0px 15px;
+   @media (max-width: $md1) {
+      max-width: 900px;
+   }
+   @media (max-width: $md2) {
+      max-width: none;
+      padding: 0 10px;
+   }
+}
+html,
+body {
+   height: 100%;
+}
+
+body {
+   height: 100%;
+   background: #000;
+   font-weight: 500;
+   color: #fff;
+   background: linear-gradient(113.49deg, #984d38 -30.3%, #181e41 58.12%) fixed;
+}
+
+//<ОСНОВОЙ БЛОК>
+//create============================
+.create {
+}
+.container {
+}
+.create__content {
+   @include flexbox();
+}
+
+.create__column {
+   flex: 0 0 49%;
+
+   margin: 0px 20px 0px 0px;
+}
+.create__column-2 {
+   margin: 0px 0px 0px 0px;
+   position: relative;
+}
+
+.create__img {
+}
+
+.create__column-text {
+   //flex-basis: 490px;
+}
+
+.create__column-img {
+   //flex-basis: calc(100% - 490px - 116px);
+   position: relative;
+   height: 100%;
+}
+
+.create__img {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+}
+.create__title {
+   font-weight: 700;
+   font-size: 50px;
+   line-height: 120%;
+   color: #ffffff;
+   max-width: 460px;
+   margin: 0px 0px 10px 0px;
+}
+.create__text {
+   font-weight: 500;
+   font-size: 20px;
+   line-height: 180%;
+   color: rgba(255, 255, 255, 0.5);
+   max-width: 490px;
+   margin: 0px 0px 46px 0px;
+}
+.create__button {
+   margin: 0px 0px 45px 0px;
+}
+.create__link-violet {
+   background: linear-gradient(214.02deg, #b75cff 6.04%, #671ae4 92.95%);
+   margin-right: 20px;
+}
+.create__link-grey {
+   background: rgba(255, 255, 255, 0.1);
+}
+.create__link {
+   font-size: 20px;
+   line-height: 30px;
+   color: #ffffff;
+   border-radius: 10px;
+   padding: 10px 20px;
+}
+.create__list {
+   @include flexbox();
+   justify-content: space-between;
+   //gap: 110px;
+}
+.create__list li {
+   text-align: center;
+   //margin: 0px 111px 0px 0px;
+   &:last-child {
+      //margin: 0px 0px 0px 0px;
+   }
+}
+.create__list-link {
+   font-weight: 700;
+   font-size: 30px;
+   line-height: 45px;
+   color: #ffffff;
+   display: block;
+}
+.create__list-text {
+   font-size: 20px;
+   line-height: 30px;
+   color: rgba(255, 255, 255, 0.5);
+}
+.create__img {
+   width: 100%;
+}
+@media (max-width: 1200px) {
+   .create__title {
+      font-size: 35px;
+      margin: 0px 0px 20px 0px;
+   }
+   .create__text {
+      font-size: 15px;
+   }
+   .create__list li {
+      //margin: 0px 50px 0px 0px;
+      &:last-child {
+         //margin: 0px 0px 0px 0px;
+      }
+   }
+   .create__list-link {
+      font-size: 25px;
+   }
+   .create__button {
+      margin: 0px 0px 35px 0px;
+   }
+}
+@media (max-width: 866px) {
+   .create__column-img {
+      padding: 0px 0px 200px 0px;
+   }
+   .create__title {
+      font-size: 35px;
+      margin: 0px 0px 5px 0px;
+   }
+   .create__text {
+      font-size: 15px;
+      margin: 0px 0px 25px 0px;
+   }
+   .create__button {
+      margin: 0px 0px 30px 0px;
+   }
+   .create__list-link {
+      font-size: 20px;
+      line-height: 30px;
+   }
+   .create__list-text {
+      font-size: 17px;
+   }
+}
+
+@media (max-width: 700px) {
+   .create__title {
+      font-size: 35px;
+      max-width: none;
+      margin: 0px 0px 10px 0px;
+   }
+   .create__text {
+      font-size: 20px;
+      max-width: none;
+      margin: 0px 0px 40px 0px;
+   }
+
+   .create__content {
+      flex-direction: column;
+   }
+   .create__column {
+      flex: 1 1 100%;
+      margin: 0px 0px 20px 0px;
+   }
+   .create__column-2 {
+      margin: 0px 0px 0px 0px;
+   }
+   .create__column-img {
+      height: none;
+      padding: 0px 0px 70% 0px;
+   }
+   .create__list {
+      //justify-content: flex-start;
+
+      //gap: 110px;
+   }
+   .create__list li {
+      //margin: 0px 50px 0px 0px;
+   }
+
+   .create__list-link {
+      font-size: 30px;
+      line-height: 30px;
+   }
+   .create__list-text {
+      font-size: 20px;
+   }
+   .create__button {
+   }
+   .create__list {
+      margin: 40px 0px 0px 0px;
+   }
+}
+
+//create============================
+//company===========================
+.company {
+   padding: 100px 0px 42px 0px;
+}
+.company__content {
+   @include flexbox();
+   align-items: center;
+   justify-content: space-between;
+}
+.company__img {
+   //flex: 0 0 33.333%;
+   display: block;
+}
+
+@media (max-width: 1250px) {
+   .company {
+      padding: 100px 0px 42px 0px;
+   }
+   .company__img img {
+      width: 200px;
+   }
+}
+
+@media (max-width: 700px) {
+   .company {
+      padding: 50px 0px 42px 0px;
+   }
+   .company__img img {
+      width: 150px;
+   }
+}
+
+@media (max-width: 503px) {
+   .company__content {
+      flex-direction: column;
+   }
+   .company__img img {
+      width: 200px;
+      margin: 0px 0px 20px 0px;
+   }
+   .company__img:last-child img {
+      margin: 0px 0px 0px 0px;
+   }
+}
+
+//company===========================
+//bid===============================
+.bid {
+}
+.container {
+}
+.bid__content {
+}
+.bid__top {
+   margin: 0px 0px 30px 0px;
+}
+.bid__top-title {
+}
+.menu-title {
+}
+.bid__top-text {
+}
+.bid__bottom {
+   @include flexbox();
+   justify-content: space-between;
+   margin-top: 30px;
+   padding: 0px 0px 100px 0px;
+}
+
+.bid__item {
+   display: block;
+   @include flexbox();
+   flex-direction: column;
+   margin: 0px 20px 0px 0px;
+
+   margin: 0px 20px 0px 0px;
+   padding: 26px;
+   background-color: rgba(255, 255, 255, 0.1);
+   border-radius: 10px;
+   @include anim(0.3s, 0s);
+   box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+   border-radius: 10px;
+   flex-basis: 32%;
+   box-sizing: border-box;
+   cursor: pointer;
+   &:last-child {
+      margin: 0px 0px 0px 0px;
+   }
+   &:hover {
+      background: rgba(255, 255, 255, 0.5);
+      .bid__bitton {
+         background: none;
+         border: 1px solid #671ae4;
+         color: #671ae4;
+      }
+   }
+}
+.bid__item-active {
+   background: rgba(255, 255, 255, 0.5);
+}
+
+.bid__img {
+   margin: 0px 0px 20px 0px;
+   position: relative;
+   overflow: hidden;
+   width: 100%;
+   height: 380px;
+}
+.bid__image {
+   width: 100%;
+   height: 380px;
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   object-fit: cover;
+   border-radius: 10px;
+}
+.bid__text {
+   @include flexbox();
+   justify-content: space-between;
+   margin: 0px 0px 25px 0px;
+}
+.bid__column {
+}
+.bid__name {
+   font-style: normal;
+   font-weight: 500;
+   font-size: 20px;
+   line-height: 30px;
+   color: rgba(255, 255, 255, 0.5);
+   margin: 0px 0px 10px 0px;
+}
+.bid__painting {
+   font-weight: 700;
+   font-size: 20px;
+   line-height: 30px;
+   color: #ffffff;
+}
+.bid__current {
+   font-weight: 500;
+   font-size: 15px;
+   line-height: 22px;
+   color: rgba(255, 255, 255, 0.5);
+   text-align: right;
+}
+.bid__cryptocurrency {
+   font-weight: 700;
+   font-size: 20px;
+   line-height: 30px;
+   color: #ffffff;
+   text-align: right;
+}
+.bid__bitton {
+   display: block;
+   background: linear-gradient(214.02deg, #b75cff 6.04%, #671ae4 92.95%);
+   font-weight: 500;
+   font-size: 20px;
+   line-height: 30px;
+   color: #ffffff;
+   display: block;
+   width: 100%;
+   text-align: center;
+   padding: 10px 0px 10px 0px;
+   border-radius: 10px;
+}
+
+.bid__bitton-active {
+   background: none;
+   border: 1px solid #671ae4;
+   color: #671ae4;
+}
+
+@media (max-width: 1250px) {
+   .bid__img {
+      height: 270px;
+   }
+   .bid__bottom {
+      padding: 0px 0px 100px 0px;
+   }
+}
+
+@media (max-width: 1200px) {
+   .bid__name {
+      font-size: 15px;
+      line-height: 20px;
+   }
+   .bid__painting {
+      font-size: 15px;
+      line-height: 20px;
+   }
+   .bid__current {
+      font-size: 15px;
+      line-height: 20px;
+   }
+   .bid__cryptocurrency {
+      font-size: 15px;
+      line-height: 20px;
+   }
+   .bid__bitton {
+      font-size: 15px;
+   }
+   .bid__bottom {
+      padding: 0px 0px 100px 0px;
+   }
+}
+
+@media (max-width: 866px) {
+   .bid__item {
+      padding: 15px;
+   }
+   .bid__top {
+      padding: 0px 0px 50px 0px;
+   }
+}
+
+@media (max-width: 700px) {
+   .bid__bottom {
+      padding: 0px 0px 50px 0px;
+      flex-direction: column;
+      margin: 0 auto;
+      align-items: center;
+   }
+
+   .bid__item {
+      margin: 0px 0px 20px 0px;
+      padding: 20px;
+      //width: 300px;
+   }
+
+   .bid__name {
+      font-size: 16px;
+      line-height: 30px;
+   }
+   .bid__painting {
+      font-size: 16px;
+      line-height: 30px;
+   }
+   .bid__current {
+      font-size: 15px;
+      line-height: 22px;
+   }
+   .bid__cryptocurrency {
+      font-size: 16px;
+      line-height: 30px;
+   }
+   .bid__column {
+      margin: 0px 100px 0px 0px;
+   }
+   .bid__column-2 {
+      margin: 0px 0px 0px 0px;
+   }
+
+   .bid__img {
+      height: 350px;
+   }
+}
+
+@media (max-width: 400px) {
+   .bid__column {
+      margin: 0px 20px 0px 0px;
+   }
+   .bid__column-2 {
+      margin: 0px 0px 0px 0px;
+   }
+   .bid__img {
+      height: 270px;
+   }
+}
+//bid===============================
+//question==========================
+
+.collapsible {
+   background-color: transparent;
+   color: rgba(255, 255, 255, 0.5);
+   cursor: pointer;
+   padding: 22px 0;
+   width: 100%;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+   text-align: left;
+   outline: none;
+   font-size: 20px;
+   margin-bottom: 18px;
+}
+
+.active,
+.collapsible:hover {
+   //background-color: #555;
+   color: rgba(255, 255, 255, 1);
+}
+
+.collapsible:after {
+   content: "\002B";
+   color: rgba(255, 255, 255, 0.5);
+   float: right;
+   margin-left: 5px;
+}
+
+.active:after {
+   color: rgba(255, 255, 255, 1);
+   content: "\2212";
+}
+
+.content {
+   padding: 0 18px;
+   max-height: 0;
+   overflow: hidden;
+   line-height: 1.5;
+   transition: max-height 0.2s ease-out;
+}
+
+.fag {
+   @include flexbox();
+   justify-content: space-between;
+}
+.fag__item {
+   flex-basis: 49.3%;
+
+   //margin-top: 10px;
+}
+.collapsible {
+}
+.question__content {
+   padding: 0px 0px 150px 0px;
+}
+.content {
+   p {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 30px;
+      color: rgba(255, 255, 255, 0.5);
+   }
+}
+
+.question__top-title {
+   margin: 0px 0px 10px 0px;
+}
+.question__top-text {
+   margin: 0px 0px 24px 0px;
+}
+
+@media (max-width: 1250px) {
+   .question__content {
+      padding: 0px 0px 150px 0px;
+   }
+}
+
+@media (max-width: 900px) {
+   .question__content {
+      padding: 0px 0px 50px 0px;
+   }
+}
+
+@media (max-width: 700px) {
+   .fag {
+      flex-direction: column;
+   }
+}
+//question==========================
+
+//подключение стилей
+@import "forms.scss";
